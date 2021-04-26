@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-5">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<main>
+    <form method="GET" action="#" th:action="@{/USD/${data}}">
+        <input type="text" placeholder="Podaj datę" th:field="${data}">
+        <button type="submit">Search</button>
+    </form>
+    <div class="table">
+        <h3>Notowania:</h3>
+        <th:block th:each="rate, index : ${rates}">
+            <p class="mark" th:text="'Data: '+${#dates.format(rate.getEffectiveDate(), 'dd-MMM-yyyy')}+' Kupno: '+${rate.getBid()}+' ('+${#numbers.formatDecimal(rateService.calculateDifferenceBid(rates,index.index), 1, 4)}+')'+' Sprzedaż: '+${rate.getAsk()}+' ('+${#numbers.formatDecimal(rateService.calculateDifferenceAsk(rates,index.index), 1, 4)}+')'"></p>
+        </th:block>
+    </div>
+</main>
+</body>
+</html>

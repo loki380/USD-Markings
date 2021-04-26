@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    min-height: 100vh;
+}
+main{
+    width: 100%;
+    /*min-height: 100vh;*/
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.table{
+    margin-top:3rem;
+}
+.mark{
+    border: 1px solid black;
+    padding: 1rem 0.5rem;
+}
